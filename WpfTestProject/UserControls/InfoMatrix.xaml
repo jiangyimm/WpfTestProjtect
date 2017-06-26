@@ -1,0 +1,74 @@
+﻿<UserControl x:Class="WpfTestProject.UserControls.InfoMatrix"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:WpfTestProject.UserControls"
+             x:Name="This"
+             d:DesignHeight="750"
+             d:DesignWidth="900"
+             mc:Ignorable="d">
+    <UserControl.Resources>
+        <Style TargetType="ListBoxItem">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBoxItem">
+                        <ContentPresenter />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="ListBox">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBox">
+                        <ItemsPresenter />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <ListBox x:Name="ListBox"
+                 Grid.Row="0"
+                 Background="Transparent"
+                 ItemTemplateSelector="{Binding ItemTemplateSelector,
+                                                ElementName=This}">
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid Columns="{Binding ColumnCount, ElementName=This}" Rows="{Binding RowCount, ElementName=This}" />
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+        </ListBox>
+        <Grid x:Name="PageControl" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <local:BaseButton x:Name="ButtonPrev"
+                                Grid.Column="0"
+                                HorizontalAlignment="Right"
+                                Style="{DynamicResource 上一页按钮}"
+                                />
+            <Label x:Name="LabelPage"
+                   Grid.Column="1"
+                   Width="120"
+                   Height="60"
+                   HorizontalContentAlignment="Center"
+                   VerticalContentAlignment="Center"
+                   Content="1/2"
+                   Foreground="White" />
+            <local:BaseButton x:Name="ButtonNext"
+                                Grid.Column="2"
+                                HorizontalAlignment="Left"
+                                Style="{DynamicResource 下一页按钮}"
+                                />
+        </Grid>
+    </Grid>
+</UserControl>
