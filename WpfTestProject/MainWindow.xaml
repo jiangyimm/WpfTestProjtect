@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfTestProject"
         xmlns:userControls="clr-namespace:WpfTestProject.UserControls"
+        xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="900"
         xmlns:viewmodels="clr-namespace:WpfTestProject.ViewModel"
@@ -14,13 +15,29 @@
     <Window.DataContext>
         <viewmodels:MainViewModel></viewmodels:MainViewModel>
     </Window.DataContext>
+
+<StackPanel>
+    <syncfusion:SfDatePicker/>
+    <syncfusion:SfTimePicker></syncfusion:SfTimePicker>
+    <!--<userControls:InfoMatrix Margin="50"
+                             RowCount="3" 
+                             ColumnCount="3" 
+                             ItemsSource="{Binding Data}"
+                             ItemTemplateSelector="{StaticResource InfoItemDataTemplateSelector}" />-->
+        <syncfusion:TileViewControl Name="Tiles" 
+                                    ItemsSource="{Binding Applications}" 
+                                    ItemContainerStyle="{StaticResource tileitemstyle}"
+                                    MinimizedItemsPercentage="0"
+                                    ClipToBounds="False" Height="476" >
+            <syncfusion:TileViewControl.ItemTemplate>
+                <DataTemplate>
+                    <local:TileItemView></local:TileItemView>
+                </DataTemplate>
+            </syncfusion:TileViewControl.ItemTemplate>
+
+
+        </syncfusion:TileViewControl>    
+</StackPanel>
     
-       
-       
-        <userControls:InfoMatrix Margin="50"
-                                 RowCount="3" 
-                                 ColumnCount="3" 
-                                 ItemsSource="{Binding Data}"
-                                 ItemTemplateSelector="{StaticResource InfoItemDataTemplateSelector}" />
   
 </Window>

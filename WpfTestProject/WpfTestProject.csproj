@@ -49,6 +49,10 @@
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Syncfusion.SampleLayout.WPF, Version=15.2460.0.40, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.SfInput.WPF, Version=15.2450.0.40, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.SfShared.WPF, Version=15.2400.0.40, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Shared.WPF, Version=15.2400.0.40, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Windows" />
@@ -74,11 +78,21 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Actions\LoadedAction.cs" />
+    <Compile Include="Actions\TileLoadedAction.cs" />
+    <Compile Include="Actions\TimeLoadedAction.cs" />
+    <Compile Include="Behavior\RestoreBehavior.cs" />
+    <Compile Include="Behavior\StateChangeBehavior.cs" />
     <Compile Include="Models\Citis.cs" />
     <Compile Include="Models\Info.cs" />
     <Compile Include="Models\InfoItemDataTemplateSelector.cs" />
+    <Compile Include="Models\Model.cs" />
+    <Compile Include="Models\TwitterModel.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Service\NavigationService.cs" />
+    <Compile Include="TileItemView.xaml.cs">
+      <DependentUpon>TileItemView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\BaseButton.cs" />
     <Compile Include="UserControls\InfoMatrix.xaml.cs">
       <DependentUpon>InfoMatrix.xaml</DependentUpon>
@@ -102,6 +116,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Theme\default.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TileItemView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
